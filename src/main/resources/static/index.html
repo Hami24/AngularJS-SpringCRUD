@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="description" content="futsalApp"/>
+<meta name="author" content="MH"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<title>CRUD example</title>
+</head>
+
+<body ng-controller="UserController">
+<header class="bg-primary text-white py-2 mb-3">
+	<h2>CRUD EXAMPLE</h2>
+</header>
+
+<div class="container-fluid">
+	<table class="table" >
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+			<th>First name</th>
+			<th>Last name</th>
+		</tr>
+		<tr ng-repeat="user in users">
+			<td>{{user.id}}</td>
+			<td>{{user.userName}}</td>
+			<td>{{user.firstName}}</td>
+			<td>{{user.lastName}}</td>
+			<td>
+				<button class="btn btn-info" ng-click="editUser(user)">Edit</button>
+			</td>
+			<td>
+				<button class="btn btn-danger" ng-click="deleteUser(user.id)">Delete</button>
+			</td>
+		</tr>
+	</table>
+	<form id="formEdit" ng-submit="updateUser(currentUser)">
+	
+		<header>
+			<h2>Edit user</h2>
+		</header>
+		<div class="form-group" hidden="true">
+			<input type="text" ng-model="currentUser.id" />
+		</div>
+		<div class="form-group">
+			<label for="#userName">Username</label>
+			<input type="text" class="form-control" ng-model="currentUser.userName" id="userName" />
+		</div>
+		<div class="form-group">
+			<label for="#firstName">First name</label>
+			<input type="text" class="form-control" ng-model="currentUser.firstName" id="firstName" />
+		</div>
+		<div class="form-group">
+			<label for="#lastName">Last name</label>
+			<input type="text" class="form-control" ng-model="currentUser.lastName" id="lastName" /></div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">Update</button>
+		</div>
+	</form>
+	
+	<form id="formAdd" ng-submit="addUser(newUser)">
+		<header>
+			<h2>Add user</h2>
+		</header>
+		<div class="form-group" hidden="true">
+			<input type="text" ng-model="newUser.id" />
+		</div>
+		<div class="form-group">
+			<label for="#userNamee">Username</label>
+			<input type="text" class="form-control" ng-model="newUser.userName" id="userNamee" />
+		</div>
+		
+		<div class="form-group">
+			<label for="#passwordd">Password</label>
+			<input type="password" class="form-control" ng-model="newUser.password" id="passwordd" />
+		</div>
+		
+		<div class="form-group">
+			<label for="#firstNamee">First name</label>
+			<input type="text" class="form-control" ng-model="newUser.firstName" id="firstNamee" />
+		</div>
+		<div class="form-group">
+			<label for="#lastNamee">Last name</label>
+			<input type="text" class="form-control" ng-model="newUser.lastName" id="lastNamee" /></div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">Add</button>
+		</div>
+	</form>
+	
+	
+</div>
+<!-- SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/app.js"></script>
+<script src="/controller/UserController.js"></script>
+<script src="/factory/UserFactory.js"></script>
+<!-- SCRIPTS -->
+</body>
+</html>
